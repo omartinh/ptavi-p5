@@ -67,14 +67,20 @@ Recibimos: 212.128.254.169, esta es la IP publica de nuestra maquina, que no coi
 
 7. Hasta la trama 45 se puede observar una secuencia de tramas del protocolo STUN.
  ** ¿Por qué crees que se hace uso de este protocolo en esta captura? Busca en la Wikipedia.
- ** ¿Estamos tras un NAT?
+STUN es un protocolo de red tipo cliente/servidor que permite a clientes NAT encontrar su direccion IP publica, el tipo de NAT en el que se encuentra y el puerto de Internet asociado con el puerto local a traves de NAT
 
+ ** ¿Estamos tras un NAT?
+Si, estamos tras un NAT, como hemos explicado en el  apartado 6 en la ultima pregunta, al no coincidir la IP publica de nuesra maquina con la IP de line-based text data que se encuentra en nuestro paquete de respuesta enviado por el servidor.
 
 8. La trama 46 es la primera trama SIP. En un entorno como el de Internet, lo habitual es desconocer la dirección IP de la otra parte al realizar una llamada. Por eso, todo usuario registra su localización en un servidor Registrar. El Registrar guarda información sobre los usuarios en un servidor de localización que puede ser utilizado para localizar usuarios.
  ** ¿Qué dirección IP tiene el servidor Registrar?
+La IP que tiene el servidor Registar sera la : 86.64.162.35
  ** ¿A qué puerto (del servidor Registrar) se envían los paquetes SIP?
+En nuestra captura Dst Port : 5060
  ** ¿Qué método SIP utiliza el UA para registrarse?
+Metodo REGISTER, para comunicar la localizacion de usuario
  ** Además de REGISTER, ¿qué instrucciones SIP entiende el UA?
+EN la captura en : Session Initiation Protocol (REGISTER) en el partado Allow encontramos las instrucciones SIP eque entiende el UA son : INVITE,ACK,OPTIONS,BYE,CANCEL,NOTIFY,REFER,MESSAGE.
 
 
 
