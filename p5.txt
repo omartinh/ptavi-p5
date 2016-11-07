@@ -207,7 +207,6 @@ Si, Telephony/RTP/Show All Streams elegimos el flujo  y clicamos en Analyze/Play
 Servicio de musica
 
 
-
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 19. Filtra por los paquetes SIP de la captura y guarda únicamente los paquetes SIP como sip.libpcap. Abre el fichero guardado para cerciorarte de que lo has hecho bien. Deberás guardarlo en un archivo de nombre p5.libpcap y añadirlo al repositorio.
