@@ -83,29 +83,40 @@ Metodo REGISTER, para comunicar la localizacion de usuario
 EN la captura en : Session Initiation Protocol (REGISTER) en el partado Allow encontramos las instrucciones SIP eque entiende el UA son : INVITE,ACK,OPTIONS,BYE,CANCEL,NOTIFY,REFER,MESSAGE.
 
 
-
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 9. Fijémonos en las tramas siguientes a la número 46:
- ** ¿Se registra con éxito en el primer intento?
+ ** ¿Se registra con éxito en el primer intento? 
+No ya que en la trama 50 encontramos un paquete con un Status: 401 Unauthorized
  ** ¿Cómo sabemos si el registro se ha realizado correctamente o no?
+Sabremos que el registro se ha realizado correctamente cuando aparezca un paquete con Status: 200 Ok
  ** ¿Podrías identificar las diferencias entre el primer intento y el segundo de registro? (fíjate en el tamaño de los paquetes y mira a qué se debe el cambio)
+En el paquete 51 encontramos que en el REGISTER hay un campo mas (Authorization: Digest username=....) por ello el tamaño del paquete es mayor (length:712) que el anterior (length:523)
  ** ¿Cuánto es el valor del tiempo de expiración de la sesión? Indica las unidades.
-
+Expires: 3600 segundos
 
 10. Una vez registrados, podemos efectuar una llamada. Vamos a probar con el servicio de eco de Ekiga que nos permite comprobar si nos hemos conectado correctamente. El servicio de eco tiene la dirección sip:500@ekiga.net. Veamos el INVITE de cerca.
  ** ¿Puede verse el nombre del que efectúa la llamada, así como su dirección SIP?
+Si, Src: 192.168.1.34, sip:500@ekiga.net SIP/2.0
  ** ¿Qué es lo que contiene el cuerpo de la trama? ¿En qué formato/protocolo está?
+El cuerpo de la trama contiene los datos de la sesion; En SDP (Session Description Protocol)
  ** ¿Tiene éxito el primer intento? ¿Cómo lo sabes?
+No tiene exito debido a que recibimos en la siguiente trama un Status: 407 Proxy Authentication
  ** ¿En qué se diferencia el segundo INVITE más abajo del primero? ¿A qué crees que se debe esto?
+En el paquete de mas abajo en Message Header encontramos una Autorizacion de proxy (Proxy-Authorization), por lo que este paquete tiene un mayor tamaño (length:1181) a diferencia del invite de mas arriba que tiene un tamaño menor (length:982)
 
 
 11. Una vez conectado, estudia el intercambio de tramas.
  ** ¿Qué protocolo(s) se utiliza(n)? ¿Para qué sirven estos protocolos?
+RTP y RTTP; RTP para intercambiar paquetes multimedia y RTTP es un protocolo para controlar el flujo
  ** ¿Cuál es el tamaño de paquete de los mismos?
+214 bytes
  ** ¿Se utilizan bits de padding?
+No hay bits de padding
  ** ¿Cuál es la periodicidad de los paquetes que se envían?
+0.02 segundos entre paquete y paquete
  ** ¿Cuántos bits/segundo estamos enviando?
+642000
 
 
 
